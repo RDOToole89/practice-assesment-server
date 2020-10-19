@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "doctor": "Dr. Coventry",
+    "email": "ecoventry@amspractice.nl",
+    "onDuty": true
+  },
+  {
+    "id": 2,
+    "doctor": "Dr. Adenet",
+    "email": "radenet@amspractice.nl",
+    "onDuty": true
+  },
+  {
+    "id": 3,
+    "doctor": "Dr. Tollady",
+    "email": "atollady@amspractice.nl",
+    "onDuty": false
+  }
+]
