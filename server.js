@@ -24,9 +24,35 @@ app.get("/patients", (req, res) => {
 });
 
 app.post("/patients", (req, res) => {
-  console.log(req.body);
+  const patient = { ...req.body };
+
+  const newPatient = {
+    id: patientsJSON[patientsJSON.length - 1].id + 1,
+    firstName: req.body.firstname,
+    lastName: req.body.lastname,
+    gender: req.body.gender,
+    dateOfBirth: req.body.birthday,
+    email: req.body.email,
+    phoneNumber: req.body.phone,
+    prescriptions: ["Jack Daniels", "Ibuprofen", "Paracetamol"],
+    doctorId: Math.floor(Math.random() * 3) + 1,
+  };
+
+  console.log("NEW PATIENT", newPatient);
+
+  patientsJSON.push(newPatient);
+
   console.log("You reached the PATIENTS post route!");
-  res.send(`POST /Patients repsonse, by ${req.body.name} ${req.body.lastname}`);
+  res.send(`POST /Patients repsonse,
+
+          // PATIENT DETAILS // 
+          name: ${patient.firstname}
+          name: ${patient.lastname}
+          name: ${patient.email}
+          name: ${patient.phone}
+          name: ${patient.gender}
+          name: ${patient.birthday}
+        }`);
 });
 
 app.get("/patients/:id", (req, res) => {
@@ -44,6 +70,8 @@ app.get("/db", (req, res) => {
   res.send(dbJSON);
 });
 
-app.listen(4000, () => {
-  console.log("Listening on port: 4000");
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}`);
 });
